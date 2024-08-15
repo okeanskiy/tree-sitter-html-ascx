@@ -1,5 +1,5 @@
 {
-  "name": "tree-sitter-html-ascx",
+  "name": "@okeanskiy/tree-sitter-html-ascx",
   "version": "0.20.3",
   "description": "HTML grammar for tree-sitter, modified to handle ASP.NET user controls (.ascx files)",
   "repository": "okeanskiy/tree-sitter-html-ascx",
