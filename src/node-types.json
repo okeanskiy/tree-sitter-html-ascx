@@ -23,6 +23,37 @@
     }
   },
   {
+    "type": "directive_element",
+    "named": true,
+    "fields": {
+      "directive_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "directive_name",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "directive_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "doctype",
     "named": true,
     "fields": {}
@@ -36,6 +67,10 @@
       "required": false,
       "types": [
         {
+          "type": "directive_element",
+          "named": true
+        },
+        {
           "type": "doctype",
           "named": true
         },
@@ -44,11 +79,19 @@
           "named": true
         },
         {
+          "type": "embedded_code_element",
+          "named": true
+        },
+        {
           "type": "entity",
           "named": true
         },
         {
           "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "non_code_embedded_element",
           "named": true
         },
         {
@@ -75,11 +118,19 @@
       "required": true,
       "types": [
         {
+          "type": "directive_element",
+          "named": true
+        },
+        {
           "type": "doctype",
           "named": true
         },
         {
           "type": "element",
+          "named": true
+        },
+        {
+          "type": "embedded_code_element",
           "named": true
         },
         {
@@ -92,6 +143,10 @@
         },
         {
           "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "non_code_embedded_element",
           "named": true
         },
         {
@@ -115,6 +170,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "embedded_code_element",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "embedded_content",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -145,6 +216,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "non_code_embedded_element",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "embedded_content",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -251,6 +338,10 @@
     "named": false
   },
   {
+    "type": "%>",
+    "named": false
+  },
+  {
     "type": "'",
     "named": false
   },
@@ -267,6 +358,34 @@
     "named": false
   },
   {
+    "type": "<%",
+    "named": false
+  },
+  {
+    "type": "<%#",
+    "named": false
+  },
+  {
+    "type": "<%$",
+    "named": false
+  },
+  {
+    "type": "<%--",
+    "named": false
+  },
+  {
+    "type": "<%:",
+    "named": false
+  },
+  {
+    "type": "<%=",
+    "named": false
+  },
+  {
+    "type": "<%@",
+    "named": false
+  },
+  {
     "type": "</",
     "named": false
   },
@@ -276,6 +395,62 @@
   },
   {
     "type": ">",
+    "named": false
+  },
+  {
+    "type": "Application",
+    "named": false
+  },
+  {
+    "type": "Assembly",
+    "named": false
+  },
+  {
+    "type": "Control",
+    "named": false
+  },
+  {
+    "type": "Implements",
+    "named": false
+  },
+  {
+    "type": "Import",
+    "named": false
+  },
+  {
+    "type": "Master",
+    "named": false
+  },
+  {
+    "type": "MasterType",
+    "named": false
+  },
+  {
+    "type": "OutputCache",
+    "named": false
+  },
+  {
+    "type": "Page",
+    "named": false
+  },
+  {
+    "type": "PreviousPageType",
+    "named": false
+  },
+  {
+    "type": "Reference",
+    "named": false
+  },
+  {
+    "type": "Register",
+    "named": false
+  },
+  {
+    "type": "application",
+    "named": false
+  },
+  {
+    "type": "assembly",
     "named": false
   },
   {
@@ -291,8 +466,16 @@
     "named": true
   },
   {
+    "type": "control",
+    "named": false
+  },
+  {
     "type": "doctype",
     "named": false
+  },
+  {
+    "type": "embedded_content",
+    "named": true
   },
   {
     "type": "entity",
@@ -303,8 +486,44 @@
     "named": true
   },
   {
+    "type": "implements",
+    "named": false
+  },
+  {
+    "type": "import",
+    "named": false
+  },
+  {
+    "type": "master",
+    "named": false
+  },
+  {
+    "type": "masterType",
+    "named": false
+  },
+  {
+    "type": "outputCache",
+    "named": false
+  },
+  {
+    "type": "page",
+    "named": false
+  },
+  {
+    "type": "previousPageType",
+    "named": false
+  },
+  {
     "type": "raw_text",
     "named": true
+  },
+  {
+    "type": "reference",
+    "named": false
+  },
+  {
+    "type": "register",
+    "named": false
   },
   {
     "type": "tag_name",

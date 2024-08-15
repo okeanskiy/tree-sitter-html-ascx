@@ -47,6 +47,8 @@ module.exports = grammar({
       $.element,
       $.script_element,
       $.style_element,
+      $.directive_element,
+      $._embedded_element,
       $.erroneous_end_tag,
     ),
 
@@ -69,6 +71,67 @@ module.exports = grammar({
       alias($.style_start_tag, $.start_tag),
       optional($.raw_text),
       $.end_tag,
+    ),
+
+    directive_element: $ => seq(
+      '<%@',
+      optional(field('directive_name', $.directive_name)),
+      repeat($.attribute),
+      '%>',
+    ),
+
+    directive_name: _ => prec.right(choice(
+      'Control',
+      'control',
+      'Register',
+      'register',
+      'Page',
+      'page',
+      'Master',
+      'master',
+      'Import',
+      'import',
+      'Assembly',
+      'assembly',
+      'Application',
+      'application',
+      'Implements',
+      'implements',
+      'MasterType',
+      'masterType',
+      'OutputCache',
+      'outputCache',
+      'PreviousPageType',
+      'previousPageType',
+      'Reference',
+      'reference',
+    )),
+
+    embedded_code_element: $ => seq(
+      '<%',
+      optional(field('content', $.embedded_content)),
+      '%>'
+    ),
+
+    non_code_embedded_element: $ => seq(
+      $._embedded_indicator,
+      optional(field('content', $.embedded_content)),
+      '%>'
+    ),
+    
+    _embedded_indicator: _ => prec.right(choice(
+      '<%=',
+      '<%:',
+      '<%#',
+      '<%--',
+      '<%$',
+    )),
+
+    embedded_content: _ => /([^%]|%%|%[^>])+/,
+
+    _embedded_element: $ => choice(
+      $.embedded_code_element,
+      $.non_code_embedded_element,
     ),
 
     start_tag: $ => seq(

@@ -67,6 +67,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "directive_element"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_embedded_element"
+        },
+        {
+          "type": "SYMBOL",
           "name": "erroneous_end_tag"
         }
       ]
@@ -166,6 +174,251 @@
         {
           "type": "SYMBOL",
           "name": "end_tag"
+        }
+      ]
+    },
+    "directive_element": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<%@"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "directive_name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "directive_name"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "attribute"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "%>"
+        }
+      ]
+    },
+    "directive_name": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "Control"
+          },
+          {
+            "type": "STRING",
+            "value": "control"
+          },
+          {
+            "type": "STRING",
+            "value": "Register"
+          },
+          {
+            "type": "STRING",
+            "value": "register"
+          },
+          {
+            "type": "STRING",
+            "value": "Page"
+          },
+          {
+            "type": "STRING",
+            "value": "page"
+          },
+          {
+            "type": "STRING",
+            "value": "Master"
+          },
+          {
+            "type": "STRING",
+            "value": "master"
+          },
+          {
+            "type": "STRING",
+            "value": "Import"
+          },
+          {
+            "type": "STRING",
+            "value": "import"
+          },
+          {
+            "type": "STRING",
+            "value": "Assembly"
+          },
+          {
+            "type": "STRING",
+            "value": "assembly"
+          },
+          {
+            "type": "STRING",
+            "value": "Application"
+          },
+          {
+            "type": "STRING",
+            "value": "application"
+          },
+          {
+            "type": "STRING",
+            "value": "Implements"
+          },
+          {
+            "type": "STRING",
+            "value": "implements"
+          },
+          {
+            "type": "STRING",
+            "value": "MasterType"
+          },
+          {
+            "type": "STRING",
+            "value": "masterType"
+          },
+          {
+            "type": "STRING",
+            "value": "OutputCache"
+          },
+          {
+            "type": "STRING",
+            "value": "outputCache"
+          },
+          {
+            "type": "STRING",
+            "value": "PreviousPageType"
+          },
+          {
+            "type": "STRING",
+            "value": "previousPageType"
+          },
+          {
+            "type": "STRING",
+            "value": "Reference"
+          },
+          {
+            "type": "STRING",
+            "value": "reference"
+          }
+        ]
+      }
+    },
+    "embedded_code_element": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<%"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "content",
+              "content": {
+                "type": "SYMBOL",
+                "name": "embedded_content"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "%>"
+        }
+      ]
+    },
+    "non_code_embedded_element": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_embedded_indicator"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "content",
+              "content": {
+                "type": "SYMBOL",
+                "name": "embedded_content"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "%>"
+        }
+      ]
+    },
+    "_embedded_indicator": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "<%="
+          },
+          {
+            "type": "STRING",
+            "value": "<%:"
+          },
+          {
+            "type": "STRING",
+            "value": "<%#"
+          },
+          {
+            "type": "STRING",
+            "value": "<%--"
+          },
+          {
+            "type": "STRING",
+            "value": "<%$"
+          }
+        ]
+      }
+    },
+    "embedded_content": {
+      "type": "PATTERN",
+      "value": "([^%]|%%|%[^>])+"
+    },
+    "_embedded_element": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "embedded_code_element"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "non_code_embedded_element"
         }
       ]
     },
